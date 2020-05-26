@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+bundle check || bundle install
+
+bindir="$(dirname "$0")"
+
+# Start spring server so that docker/run can exec other commands
+# against the web container
+spring server &
+
+bundle exec rails s -p 3005 -b 0.0.0.0
