@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version: 2.6.3 / Rails version: 6.0.3
 
-Things you may want to cover:
+A model *UserAttribute* (`hb_project/app/models/user_attribute.rb`) allows to store custom attributes for a User.
+The types Boolean and String are supported through the property `field_type`.
 
-* Ruby version
+As requested by the exercise, the following criterias must be supported:
+* Admin manages the global User custom attributes  
+  Done through `hb_project/test/models/user_attribute_test.rb`
+* Admin manages a specific Event’s custom attributes
+* Admin makes a custom attribute optional/required on the User profile
+* Admin makes a custom attribute optional/required on the User signup form
+* Admin makes a custom attribute optional/required on a specific Event Registration form
+* User fills in a custom attribute on his profile
+* User fills in a custom attribute on the signup form
+* User fills in a custom attribute on an Event Registration form
+* User reads his custom attributes on his profile
+* Admin reads an Event registration’s custom attributes
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For the moment, everything highly relies on models. On a second step it could be good to abstract some logic into service classes.
