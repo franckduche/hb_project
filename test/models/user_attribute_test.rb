@@ -18,6 +18,22 @@ class UserAttributeTest < ActiveSupport::TestCase
     assert_equal 1, UserAttribute.count
   end
 
+  test "make a custom attribute visible on both User pages" do
+    attribute = UserAttribute.new
+    attribute.display_on_profile = true
+    attribute.display_on_signup = true
+    assert attribute.display_on_profile
+    assert attribute.display_on_signup
+  end
+
+  test "make a custom attribute required on both User pages" do
+    attribute = UserAttribute.new
+    attribute.required_on_profile = true
+    attribute.required_on_signup = true
+    assert attribute.required_on_profile
+    assert attribute.required_on_signup
+  end
+
   test "add/update/destroy a custom attribute update existing users accordingly" do
     assert_equal 0, User.first.user_attributes.count
     attribute = UserAttribute.create

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_070123) do
+ActiveRecord::Schema.define(version: 2020_05_27_152423) do
 
   create_table "user_attributes", force: :cascade do |t|
     t.string "label"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_070123) do
     t.boolean "display_on_signup"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "required_on_profile"
+    t.boolean "required_on_signup"
   end
 
   create_table "user_attributes_users", id: false, force: :cascade do |t|
