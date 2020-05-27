@@ -17,4 +17,19 @@ class UserAttributeTest < ActiveSupport::TestCase
     UserAttribute.last.delete
     assert_equal 1, UserAttribute.count
   end
+
+  test "add/update/destroy a custom attribute update existing users accordingly" do
+    assert_equal 0, User.first.user_attributes.count
+    attribute = UserAttribute.create
+    assert_equal 1, User.first.user_attributes.count, "The user attribute was correctly added to the existing Users"
+
+    new_label = "label"
+    assert_nil User.first.user_attributes.first.label
+    attribute.label = new_label
+    attribute.save
+    assert_equal new_label, User.first.user_attributes.first.label, "The update of the user attribute was considered on the User's side"
+
+    attribute.destroy
+    assert_equal 0, User.first.user_attributes.count, "The user attribute was correctly removed from the User as well"
+  end
 end
