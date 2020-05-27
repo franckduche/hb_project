@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_153743) do
+ActiveRecord::Schema.define(version: 2020_05_27_070123) do
 
   create_table "user_attributes", force: :cascade do |t|
     t.string "label"
     t.integer "field_type"
     t.boolean "display_on_profile"
     t.boolean "display_on_signup"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_attributes_users", id: false, force: :cascade do |t|
+    t.integer "user_attribute_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "boolean_value"
+    t.string "string_value"
+    t.index "\"attribute_id\"", name: "index_user_attributes_users_on_attribute_id"
+    t.index ["user_id"], name: "index_user_attributes_users_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password"
+    t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

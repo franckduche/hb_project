@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user_one:
+  name: User
+  password: dummy-password
+  role: 1
+
+admin_one:
+  name: Admin
+  password: dummy-password
+  role: 2

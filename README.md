@@ -18,6 +18,6 @@ As requested by the exercise, the following criterias must be supported:
 * User reads his custom attributes on his profile
 * Admin reads an Event registration’s custom attributes
 
-** All those tests can be launched in a Docker container with `docker/run rails test`. ** 
+**All those tests can be launched in a Docker container with `docker/run rails test`.** The default test framework provided by Rails 6 was used.
 
 For the moment, everything highly relies on models. On a second step it could be good to abstract some logic into service classes.
