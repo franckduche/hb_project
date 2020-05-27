@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_152423) do
+ActiveRecord::Schema.define(version: 2020_05_27_160156) do
+
+  create_table "user_attribute_values", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "user_attribute_id", null: false
+    t.string "string_value"
+    t.boolean "boolean_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_attribute_id"], name: "index_user_attribute_values_on_user_attribute_id"
+    t.index ["user_id"], name: "index_user_attribute_values_on_user_id"
+  end
 
   create_table "user_attributes", force: :cascade do |t|
     t.string "label"
@@ -23,15 +34,6 @@ ActiveRecord::Schema.define(version: 2020_05_27_152423) do
     t.boolean "required_on_signup"
   end
 
-  create_table "user_attributes_users", id: false, force: :cascade do |t|
-    t.integer "user_attribute_id", null: false
-    t.integer "user_id", null: false
-    t.boolean "boolean_value"
-    t.string "string_value"
-    t.index "\"attribute_id\"", name: "index_user_attributes_users_on_attribute_id"
-    t.index ["user_id"], name: "index_user_attributes_users_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"
@@ -40,4 +42,6 @@ ActiveRecord::Schema.define(version: 2020_05_27_152423) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "user_attribute_values", "user_attributes"
+  add_foreign_key "user_attribute_values", "users"
 end
