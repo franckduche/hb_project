@@ -2,9 +2,9 @@ class UserAttributeValue < ApplicationRecord
   belongs_to :user
   belongs_to :user_attribute
 
-  def value=(value)   
+  def value=(value)
     update_attribute(:boolean_value, value) if user_attribute.boolean?
-    update_attribute(:string_value, value)
+    update_attribute(:string_value, value) unless user_attribute.boolean?
   end
 
   def value

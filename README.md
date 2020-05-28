@@ -14,8 +14,8 @@ As requested by the exercise, the following criterias must be supported:
 - [x] Admin makes a custom attribute optional/required on the User signup form
   Done through `hb_project/test/models/user_attribute_test.rb`
 - [ ] Admin makes a custom attribute optional/required on a specific Event Registration form
-- [ ] User fills in a custom attribute on his profile
-- [ ] User fills in a custom attribute on the signup form
+- [x] User fills in a custom attribute on his profile
+- [x] User fills in a custom attribute on the signup form
 - [ ] User fills in a custom attribute on an Event Registration form
 - [x] User reads his custom attributes on his profile  
   Done through `hb_project/test/models/user_test.rb`
