@@ -11,6 +11,8 @@ class User < ApplicationRecord
     if value.present?
       attribute_value.value = value
     end
+
+    attribute_value
   end
 
   def display_attributes_on_profile

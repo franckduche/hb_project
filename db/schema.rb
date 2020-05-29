@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_160156) do
+ActiveRecord::Schema.define(version: 2020_05_29_070032) do
+
+  create_table "event_attribute_values", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "event_attribute_id", null: false
+    t.string "string_value"
+    t.boolean "boolean_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_attribute_id"], name: "index_event_attribute_values_on_event_attribute_id"
+    t.index ["event_id"], name: "index_event_attribute_values_on_event_id"
+  end
+
+  create_table "event_attributes", force: :cascade do |t|
+    t.string "label"
+    t.integer "field_type"
+    t.boolean "required"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "user_attribute_values", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -42,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_160156) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "event_attribute_values", "event_attributes"
+  add_foreign_key "event_attribute_values", "events"
   add_foreign_key "user_attribute_values", "user_attributes"
   add_foreign_key "user_attribute_values", "users"
 end

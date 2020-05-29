@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  event_attribute: one
+  string_value: MyString
+  boolean_value: false
+
+two:
+  event: two
+  event_attribute: two
+  string_value: MyString
+  boolean_value: false
